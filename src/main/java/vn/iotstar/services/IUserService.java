@@ -1,16 +1,16 @@
-package vn.iotstar.dao;
+package vn.iotstar.services;
 
-import java.util.List;
-import vn.iotstar.dao.*;
 import vn.iotstar.models.User;
 import vn.iotstar.models.UserModel;
 
-public interface iUserDao {
-	List<UserModel> findAll();
-	UserModel findAId(int id);
-	void insert(UserModel user);
+public interface IUserService {
+	UserModel login(String username, String password);
+
 	UserModel FindByUserName(String username);
-	void insert(User user);
+
+	void insert(UserModel user);
+
+	boolean register(String username, String password, String fullname, String email, String phone);
 
 	boolean checkExistEmail(String email);
 
