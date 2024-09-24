@@ -1,32 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="jakarta.tags.core"%>
-<%@ taglib prefix="fmt" uri="jakarta.tags.fmt"%>
-<%@ taglib prefix="fn" uri="jakarta.tags.functions"%>
-
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Create New Password</title>
+<title>My Profile</title>
 </head>
 <body>
-	<form action="/MVC/newpass" method="post">
-		<c:if test="${alert != null}">
-			<h3 class="alert alert-danger">${alert}</h3>
-		</c:if>
-
-		<div class="container">
-			<br><label for="email"><b>Email</b></label> <input type="text"
-				placeholder="Enter Email" name="email"><br>
-			<br><label for="text"><b>Mật khẩu mới</b></label> <input type="text"
-				placeholder="Enter New Password" name="newpass"><br>
-			<br><label for="text"><b>Nhập lại mật khẩu</b></label> <input type="text"
-				placeholder="Enter Password Again" name="passagain"><br>
-			<br><button type="submit">Xác nhận</button><br>
+<center>
+	<form action="/Week2/myaccount" method="post">
+	<div class="container">
+			<br><label for="text"><b>Fullname</b></label> <input type="text" name="fullname"><br>
+			<br><label for="text"><b>Phone</b></label> <input type="text" name="phone"><br>
+			<br><label for="text"><b>Images</b></label> <input type="text" name="images"><br>
+			<br><button type="submit"><a href="/JDBC/home">Trang chủ</a></button><br>
 		</div>
-	</form>
+		</center>
 </body>
 </html>

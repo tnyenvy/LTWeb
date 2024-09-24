@@ -7,9 +7,13 @@ import vn.iotstar.models.UserModel;
 
 public interface iUserDao {
 	List<UserModel> findAll();
+
 	UserModel findAId(int id);
+
 	void insert(UserModel user);
+
 	UserModel FindByUserName(String username);
+
 	void insert(User user);
 
 	boolean checkExistEmail(String email);
@@ -17,4 +21,10 @@ public interface iUserDao {
 	boolean checkExistUsername(String username);
 
 	boolean checkExistPhone(String phone);
+
+	void update(String password, String email);
+
+	List<String> search(String username);
+
+	void updateProfile(String username, String fullname, String phone, String images);
 }

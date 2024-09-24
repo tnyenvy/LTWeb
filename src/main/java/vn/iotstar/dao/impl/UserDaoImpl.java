@@ -174,9 +174,58 @@ public class UserDaoImpl extends DBConnectSQL implements iUserDao {
 	}
 
 	@Override
+	public void update(String password, String email) {
+		String sql = "UPDATE Users SET password = ? WHERE email = ?";
+		try {
+			con = new DBConnectSQL().getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, password);
+			ps.setString(2, email);
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
 	public void insert(User user) {
 		// TODO Auto-generated method stub
 		
 	}
-
+	@Override
+	public List<String> search(String username) {
+		String sql = "SELECT * FROM Users WHERE username = ?";
+		try {
+			con = new DBConnectSQL().getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, username);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				List<String> user = new ArrayList<String>();
+				user.add(rs.getString("username"));
+				user.add(rs.getString("images"));
+				user.add(rs.getString("fullname"));
+				user.add(rs.getString("phone"));
+				return user;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	@Override
+	public void updateProfile(String username, String fullname, String phone, String images) {
+		String sql = "UPDATE Users SET fullname = ?, phone = ?, images = ? WHERE username = ?  ";
+		try {
+			con = new DBConnectSQL().getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, fullname);
+			ps.setString(2, phone);
+			ps.setString(3, images);
+			ps.setString(4, username);
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }

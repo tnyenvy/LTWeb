@@ -1,6 +1,7 @@
 package vn.iotstar.services.impl;
 
 import java.sql.Date;
+import java.util.List;
 
 import vn.iotstar.dao.iUserDao;
 import vn.iotstar.dao.impl.UserDaoImpl;
@@ -40,7 +41,7 @@ public class UserService implements IUserService {
 			return false;
 			}
 			long millis=System.currentTimeMillis(); java.sql.Date date=new java.sql.Date(millis);
-			userDao.insert(new UserModel(username, password, null, fullname, email, phone, 2, date));
+			userDao.insert(new UserModel(username, password, null, fullname, email, phone, 1, date));
 			return true;
 	}
 
@@ -62,6 +63,21 @@ public class UserService implements IUserService {
 	public static void main(String[] args) {
 		IUserService userService = new UserService();
 		System.out.println(userService.register("Anh", "123", "Nguyễn Trung Anh", "nta2024@gmail.com",null));
-		//System.out.println(userService.checkExistEmail("lhbaophuc0802@gmail.com"));
+	
 	}
+
+	@Override
+	public void update(String password, String email) {
+		userDao.update(password, email);
+		
+	}
+	@Override
+	public List<String> search(String username) {
+		return userDao.search(username);
+	}
+	@Override
+	public void updateProfile(String username, String fullname, String phone, String images) {
+		userDao.updateProfile(username, fullname, phone, images);
+	}
+	
 }

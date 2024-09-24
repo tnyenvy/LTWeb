@@ -7,6 +7,7 @@
 <title>Forget Password</title>
 </head>
 <body>
+<center>
 	<form action="/Week2/forget" method="post">
 	<h3> Nhập email xác nhận </h3>
 		<c:if test="${alert != null}">
@@ -20,5 +21,6 @@
 			<button type="submit">Lấy lại mật khẩu</button>
 		</div>
 	</form>
+	</center>
 </body>
 </html>
